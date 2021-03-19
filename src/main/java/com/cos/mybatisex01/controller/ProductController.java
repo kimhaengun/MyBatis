@@ -1,6 +1,9 @@
 package com.cos.mybatisex01.controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,5 +21,18 @@ public class ProductController {
 	public String save(@RequestBody Product product) {
 		productRepository.save(product);
 		return "ok";
+	}
+	
+	@DeleteMapping("/product/{id}")
+	public String deleteById(@PathVariable int id) {
+		productRepository.deleteById(id);
+		return "ok";
+	}
+	@PutMapping("/product/{id}")
+	public String update(@PathVariable int id,@RequestBody Product product) {
+		product.setId(id);
+		productRepository.updateById(product);
+		return "ok";
+		
 	}
 }
