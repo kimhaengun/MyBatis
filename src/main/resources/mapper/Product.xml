@@ -15,4 +15,13 @@
   <update id="updateById">
   	UPDATE product set name=#{name},code=#{code} WHERE id = #{id}
   </update>
+  
+  <!--resultType이 있어야 리턴이가능-->
+  <select id="findAll" resultType="com.cos.mybatisex01.model.Product">
+  	SELECT * FROM product
+  </select>
+  
+  <select id="findById" resultType="com.cos.mybatisex01.model.Product">
+  	SELECT * FROM product WHERE id=#{id}
+  </select>
 </mapper>
